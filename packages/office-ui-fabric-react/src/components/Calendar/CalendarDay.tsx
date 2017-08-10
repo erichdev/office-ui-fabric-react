@@ -8,7 +8,7 @@ import {
   getRTL,
   getRTLSafeKeyCode
 } from '../../Utilities';
-import { ICalendarStrings } from './Calendar.Props';
+import { ICalendarStrings, ICalendarIconStrings } from './Calendar.Props';
 import { DayOfWeek, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { FocusZone } from '../../FocusZone';
 import { Icon } from '../../Icon';
@@ -48,6 +48,7 @@ export interface ICalendarDayProps extends React.Props<CalendarDay> {
   firstDayOfWeek: DayOfWeek;
   dateRangeType: DateRangeType;
   autoNavigateOnSelection: boolean;
+  navigationIcons: ICalendarIconStrings;
   today?: Date;
 }
 
@@ -84,9 +85,11 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
   public render() {
     let { activeDescendantId, weeks } = this.state;
-    let { firstDayOfWeek, strings, navigatedDate, onSelectDate } = this.props;
+    let { firstDayOfWeek, strings, navigatedDate, onSelectDate, navigationIcons } = this.props;
     let dayPickerId = getId('DatePickerDay-dayPicker');
     let monthAndYearId = getId('DatePickerDay-monthAndYear');
+    let leftNavigationIcon = navigationIcons.leftNavigation;
+    let rightNavigationIcon = navigationIcons.rightNavigation;
 
     return (
       <div className={ css('ms-DatePicker-dayPicker', styles.dayPicker) } id={ dayPickerId }>
@@ -106,7 +109,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               aria-label={ strings.prevMonthAriaLabel }
               role='button'
               tabIndex={ 0 }>
-              <Icon iconName={ getRTL() ? 'ChevronRight' : 'ChevronLeft' } />
+              <Icon iconName={ getRTL() ? rightNavigationIcon : leftNavigationIcon } />
             </span >
             <span
               className={ css('ms-DatePicker-nextMonth js-nextMonth', styles.nextMonth) }
@@ -116,7 +119,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               aria-label={ strings.nextMonthAriaLabel }
               role='button'
               tabIndex={ 0 }>
-              <Icon iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' } />
+              <Icon iconName={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
             </span >
           </div >
           <div className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) } />
@@ -143,7 +146,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               </tr>
             </thead>
             <tbody>
-              { weeks.map((week, weekIndex) =>
+              { weeks!.map((week, weekIndex) =>
                 <tr key={ weekIndex }>
                   { week.map((day, dayIndex) =>
                     <td key={ day.key }>
@@ -164,10 +167,10 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                         aria-selected={ day.isSelected }
                         aria-label={ day.originalDate.toLocaleString ?
                           day.originalDate.toLocaleString([], { day: 'numeric', month: 'long', year: 'numeric' }) : day.originalDate.getDate() }
-                        id={ compareDates(navigatedDate, day.originalDate) ? activeDescendantId : null }
+                        id={ compareDates(navigatedDate, day.originalDate) ? activeDescendantId : undefined }
                         data-is-focusable={ true }
-                        ref={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : null }
-                        key={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : null } >
+                        ref={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined }
+                        key={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined } >
                         <span aria-hidden='true'>{ day.date }</span>
                       </div>
                     </td>
@@ -192,7 +195,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     if (weekIndex === 0 && ev.which === KeyCodes.up) {
       this.props.onNavigateDate(addWeeks(date, -1), true);
       ev.preventDefault();
-    } else if (weekIndex === (this.state.weeks.length - 1) && ev.which === KeyCodes.down) {
+    } else if (weekIndex === (this.state.weeks!.length - 1) && ev.which === KeyCodes.down) {
       this.props.onNavigateDate(addWeeks(date, 1), true);
       ev.preventDefault();
     } else if (dayIndex === 0 && ev.which === getRTLSafeKeyCode(KeyCodes.left)) {

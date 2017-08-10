@@ -5,7 +5,7 @@ import {
   css,
   getRTL
 } from '../../Utilities';
-import { ICalendarStrings } from './Calendar.Props';
+import { ICalendarStrings, ICalendarIconStrings } from './Calendar.Props';
 import { FocusZone } from '../../FocusZone';
 import { addYears, setMonth } from '../../utilities/dateMath/DateMath';
 import { Icon } from '../../Icon';
@@ -19,6 +19,7 @@ export interface ICalendarMonthProps extends React.Props<CalendarMonth> {
   onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
   today?: Date;
   highlightCurrentMonth: boolean;
+  navigationIcons: ICalendarIconStrings;
 }
 
 export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
@@ -45,7 +46,9 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
   public render() {
 
-    let { navigatedDate, strings, today, highlightCurrentMonth } = this.props;
+    let { navigatedDate, strings, today, highlightCurrentMonth, navigationIcons } = this.props;
+    let leftNavigationIcon = navigationIcons.leftNavigation;
+    let rightNavigationIcon = navigationIcons.rightNavigation;
 
     return (
       <div className={ css('ms-DatePicker-monthPicker', styles.monthPicker) }>
@@ -62,7 +65,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               aria-label={ strings.prevYearAriaLabel }
               role='button'
               tabIndex={ 0 }>
-              <Icon iconName={ getRTL() ? 'ChevronRight' : 'ChevronLeft' } />
+              <Icon iconName={ getRTL() ? rightNavigationIcon : leftNavigationIcon } />
             </span>
             <span
               className={ css('ms-DatePicker-nextYear js-nextYear', styles.nextYear) }
@@ -71,7 +74,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               aria-label={ strings.nextYearAriaLabel }
               role='button'
               tabIndex={ 0 }>
-              <Icon iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' } />
+              <Icon iconName={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
             </span>
           </div>
           <div className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear) }>{ navigatedDate.getFullYear() }</div>
@@ -85,14 +88,14 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
                   css('ms-DatePicker-monthOption',
                     styles.monthOption,
                     {
-                      ['ms-DatePicker-day--today ' + styles.monthIsCurrentMonth]: highlightCurrentMonth && this.isCurrentMonth(index, navigatedDate.getFullYear(), today)
+                      ['ms-DatePicker-day--today ' + styles.monthIsCurrentMonth]: highlightCurrentMonth && this.isCurrentMonth(index, navigatedDate.getFullYear(), today!)
                     })
                 }
                 key={ index }
                 onClick={ this._selectMonthCallbacks[index] }
                 aria-label={ setMonth(navigatedDate, index).toLocaleString([], { month: 'long', year: 'numeric' }) }
                 data-is-focusable={ true }
-                ref={ navigatedDate.getMonth() === index ? 'navigatedMonth' : null }
+                ref={ navigatedDate.getMonth() === index ? 'navigatedMonth' : undefined }
               >
                 { month }
               </span>

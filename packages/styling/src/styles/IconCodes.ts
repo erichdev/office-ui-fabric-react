@@ -312,6 +312,10 @@ export const IconCodes = {
    */
   broom: '\uEA99',
   /**
+   * Icon code with the value '\uF24F'.
+   */
+  buildQueue: '\uF24F',
+  /**
    * Icon code with the value '\uF0D0'.
    */
   bufferTimeAfter: '\uF0D0',
@@ -772,6 +776,10 @@ export const IconCodes = {
    */
   delveLogo: '\uED76',
   /**
+   * Icon code with the value '\uF29D'.
+   */
+  deploy: '\uF29D',
+  /**
    * Icon code with the value '\uEDC1'.
    */
   descending: '\uEDC1',
@@ -811,6 +819,10 @@ export const IconCodes = {
    * Icon code with the value '\uE8E0'.
    */
   dislike: '\uE8E0',
+  /**
+   * Icon code with the value '\uE949'.
+   */
+  divider: '\uE949',
   /**
    * Icon code with the value '\uEEB8'.
    */
@@ -1159,6 +1171,10 @@ export const IconCodes = {
    * Icon code with the value '\uE7C1'.
    */
   flag: '\uE7C1',
+  /**
+   * Icon code with the value '\uF1F3'.
+   */
+  flameSolid: '\uF1F3',
   /**
    * Icon code with the value '\uE935'.
    */
@@ -1976,6 +1992,10 @@ export const IconCodes = {
    */
   powerBiLogo: '\uEA1E',
   /**
+   * Icon code with the value '\uEA1E'.
+   */
+  powerBILogo: '\uEA1E',
+  /**
    * Icon code with the value '\uEF72'.
    */
   powerPointDocument: '\uEF72',
@@ -2400,6 +2420,10 @@ export const IconCodes = {
    */
   speakers: '\uE7F5',
   /**
+   * Icon code with the value '\uF40D'.
+   */
+  spacer: '\uF40D ',
+  /**
    * Icon code with the value '\uEC4A'.
    */
   speedHigh: '\uEC4A',
@@ -2451,6 +2475,10 @@ export const IconCodes = {
    * Icon code with the value '\uEA04'.
    */
   storeLogoMed: '\uEA04',
+  /**
+   * Icon code with the value '\uF329'.
+   */
+  streamLogo: '\uF329',
   /**
    * Icon code with the value '\uEDE0'.
    */

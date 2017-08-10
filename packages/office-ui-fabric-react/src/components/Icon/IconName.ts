@@ -259,6 +259,7 @@ export type IconName =
   'DiffSideBySide' |
   'DisableUpdates' |
   'Dislike' |
+  'Divider' |
   'DockLeft' |
   'DockLeftMirrored' |
   'DockRight' |
@@ -742,6 +743,7 @@ export type IconName =
   'SortDown' |
   'SortLines' |
   'SortUp' |
+  'Spacer' |
   'Speakers' |
   'SpeedHigh' |
   'Split' |
@@ -766,6 +768,7 @@ export type IconName =
   'StoreLogoMed' |
   'Storyboard' |
   'Streaming' |
+  'StreamLogo' |
   'Strikethrough' |
   'Subscribe' |
   'Subscript' |
