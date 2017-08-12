@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/styling",
-      "comment": "add StreamLogo and PowerBILogo icons",
+      "comment": "getFocusStyle: Add -moz-focus-inner to fix outline bug",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/styling",
-  "email": "t-qianl@microsoft.com"
+  "email": "micahgodbolt@gmail.com"
 }
