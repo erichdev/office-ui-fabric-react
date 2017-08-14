@@ -3,6 +3,8 @@ node_js:
   - '7'
 before_script:
   - npm install -g gulp
-script:
   - npm run buildfast
+  - npm start &
+  - sleep 1
+script:
   - npm run test-screener
