@@ -28,5 +28,7 @@ module.exports = {
     document.querySelector('.ms-App-content').style.position = 'static';
   },
   
-  failureExitCode: 0
+  failureExitCode: 0,
+  
+  baseBranch: 'master'
 };
