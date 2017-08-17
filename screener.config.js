@@ -1,6 +1,6 @@
 module.exports = {
   apiKey: process.env.SCREENER_API_KEY,
-  projectRepo: 'OfficeDev/office-ui-fabric-react',
+  projectRepo: 'erichdev/office-ui-fabric-react',
   hide: '.od-Header, .App-nav, .ComponentPage-overviewSection, .ComponentPage-bestPracticesSection, .ComponentPage-implementationSection, .od-OfficeFooter, [class^="pageHeader_"], .App-mobileNavBar, .App-mobileNavOverlay, .ms-App-header, .ms-App-nav, ',
 
   tunnel: {
