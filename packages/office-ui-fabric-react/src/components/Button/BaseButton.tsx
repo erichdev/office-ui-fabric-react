@@ -263,7 +263,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           className={ this._classNames.label }
           id={ this._labelId }
         >
-          { text } **FOO
+          { text }
         </span>
       );
     }
