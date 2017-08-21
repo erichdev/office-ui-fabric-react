@@ -20,7 +20,8 @@
     "buildfast": "npm run _rushBuild",
     "change": "node node_modules/@microsoft/rush/bin/rush change",
     "generate": "node node_modules/@microsoft/rush/bin/rush generate",
-    "test-screener": "screener-runner --conf screener.config.js"
+    "test-screener": "screener-runner --conf screener.config.js",
+    "bundlesize": "bundlesize"
   },
   "license": "MIT",
   "devDependencies": {
