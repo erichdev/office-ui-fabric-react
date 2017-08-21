@@ -14,7 +14,7 @@
     "_rushRebuild": "node node_modules/@microsoft/rush/bin/rush rebuild --production --verbose",
     "_rushRebuildFast": "node node_modules/@microsoft/rush/bin/rush rebuild --verbose",
     "postinstall": "npm run _rushInstall && npm run _rushBuildToFabric",
-    "test": "npm run _rushBuild",
+    "test": "npm run _rushBuild && bundlesize",
     "start": "cd packages && cd office-ui-fabric-react && npm start",
     "build": "npm run _rushRebuild",
     "buildfast": "npm run _rushBuild",
@@ -25,9 +25,16 @@
   "license": "MIT",
   "devDependencies": {
     "@microsoft/rush": "3.0.12",
+    "bundlesize": "^0.13.2",
     "github": "^7.0.0",
     "gulp": "^3.9.1",
     "screener-runner": "^0.6.17",
     "yargs": "^6.5.0"
-  }
+  },
+  "bundlesize": [
+    {
+      "path": "./packages/office-ui-fabric-react/dist/office-ui-fabric-react.min.js",
+      "maxSize": "152 kB"
+    }
+  ]
 }
