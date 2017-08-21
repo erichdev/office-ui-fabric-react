@@ -1,0 +1,16 @@
+{
+  "name": "office-ui-fabric-react",
+  "description": "For Heroku review app",
+  "scripts": {
+  },
+  "env": {
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+
+  ]
+}
