@@ -34,7 +34,7 @@
   },
   "bundlesize": [
     {
-      "path": "./packages/office-ui-fabric-react/dist/office-ui-fabric-react.min.js",
+      "path": "./packages/office-ui-fabric-react/dist/office-ui-fabric-react.js",
       "maxSize": "152 kB"
     }
   ]
