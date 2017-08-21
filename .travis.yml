@@ -4,7 +4,8 @@ node_js:
 before_script:
   - npm install -g gulp
   - npm run buildfast
-  - npm start &
-  - sleep 1
-script:
-  - npm run test-screener
+  - npm run bundlesize
+#  - npm start &
+#  - sleep 1
+#script:
+#  - npm run test-screener
