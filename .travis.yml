@@ -4,7 +4,10 @@ node_js:
 before_script:
   - npm install -g gulp
   - npm run buildfast
-  - npm start &
-  - sleep 1
-script:
-  - npm run test-screener
+#   - npm start &
+#   - sleep 1
+# script:
+#   - npm run test-screener
+after_success:
+  - chmod ugo+x ./deploy.sh
+  - ./deploy.sh
