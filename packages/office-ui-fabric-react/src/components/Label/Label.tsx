@@ -18,7 +18,7 @@ export class Label extends BaseComponent<ILabelProps, any> {
           disabled && ('is-disabled ' + styles.isDisabled),
           required && ('is-required ' + styles.isRequired)
         ) }>
-        { children }
+        { children } *TEST SURGE
       </label>
     );
   }
