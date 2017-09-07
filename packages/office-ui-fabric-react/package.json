@@ -32,6 +32,7 @@
     "es6-weak-map": "^2.0.2",
     "es6-map": "^0.1.5",
     "highlight.js": "^9.6.0",
+    "jsftp": "^2.0.0",
     "office-ui-fabric-core": ">=7.1.2 <8.0.0",
     "office-ui-fabric-react-tslint": ">=1.0.0 <2.0.0",
     "react": "^15.4.2",
