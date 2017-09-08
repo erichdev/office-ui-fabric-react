@@ -10,40 +10,40 @@ let config = {
 
 console.log('HOST', config.host);
 console.log('USER', config.user);
-console.log('pass', config.pass.substring(0, 4));
+console.log('pass', config.pass);
 
 let Ftp = new JSFtp(config);
 
 Ftp.keepAlive(2000);
 
-//
-Ftp.list('site/wwwroot', function (err, res) {
-  console.log('inside list');
+// //
+// Ftp.list('site/wwwroot', function (err, res) {
+//   console.log('inside list');
 
-  if (err)
-    console.error(err);
+//   if (err)
+//     console.error(err);
 
-  console.log('content: ' + res);
-});
+//   console.log('content: ' + res);
+// });
 
-Ftp.on('data', function (data) {
-  console.log('DATA: ', data);
-})
+// Ftp.on('data', function (data) {
+//   console.log('DATA: ', data);
+// })
 
-Ftp.on('connect', function (data) {
-  console.log('CONNECT: ', data);
-})
-//
+// Ftp.on('connect', function (data) {
+//   console.log('CONNECT: ', data);
+// })
+// //
 
-//
-Ftp.on('progress', function (data) {
-  console.log('PROGRESS: ', data);
-})
+// //
+// Ftp.on('progress', function (data) {
+//   console.log('PROGRESS: ', data);
+// })
 
-Ftp.on('error', function (data) {
-  console.log('ERRRR: ', data);
-})
-//
+// Ftp.on('error', function (data) {
+//   console.log('ERROR: ', data);
+// })
+// //
 
 const demo = fs.readFileSync('packages/office-ui-fabric-react/dist/demo-app.js');
 Ftp.put(demo, 'site/wwwroot/v-erabe/demo-app.js', function (err) {
@@ -51,7 +51,7 @@ Ftp.put(demo, 'site/wwwroot/v-erabe/demo-app.js', function (err) {
     console.log("File transferred successfully!");
 
   else
-    console.error('Error uploading' + err);
+    console.error('ERROR UPLOADING: ' + err);
 });
 
 Ftp = new JSFtp(config);
@@ -62,7 +62,7 @@ Ftp.put(html, 'site/wwwroot/v-erabe/index.html', function (err) {
     console.log("File transferred successfully!");
 
   else
-    console.error('Error uploading' + err);
+    console.error('ERROR UPLOADING: ' + err);
 });
 
 
