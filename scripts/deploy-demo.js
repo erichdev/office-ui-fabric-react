@@ -1,4 +1,5 @@
 let JSFtp = require("jsftp");
+let fs = require('fs');
 let argv = require('yargs').argv;
 
 let config = {
@@ -7,38 +8,42 @@ let config = {
   pass: argv.password
 };
 
+
 let Ftp = new JSFtp(config);
 
-//
-Ftp.list('site/wwwroot', function (err, res) {
-  console.log('inside list');
+Ftp.keepAlive(2000);
 
-  if (err)
-    console.error(err);
+// //
+// Ftp.list('site/wwwroot', function (err, res) {
+//   console.log('inside list');
 
-  console.log('content: ' + res);
-});
+//   if (err)
+//     console.error(err);
 
-Ftp.on('data', function (data) {
-  console.log('DATA: ', data);
-})
+//   console.log('content: ' + res);
+// });
 
-Ftp.on('connect', function (data) {
-  console.log('CONNECT: ', data);
-})
-//
+// Ftp.on('data', function (data) {
+//   console.log('DATA: ', data);
+// })
 
-//
-Ftp.on('progress', function (data) {
-  console.log('PROGRESS: ', data);
-})
+// Ftp.on('connect', function (data) {
+//   console.log('CONNECT: ', data);
+// })
+// //
 
-Ftp.on('error', function (data) {
-  console.log('ERRRR: ', data);
-})
-//
+// //
+// Ftp.on('progress', function (data) {
+//   console.log('PROGRESS: ', data);
+// })
 
-Ftp.put('clean.js', 'site/wwwroot/v-erabe/clean.js', function (err) {
+// Ftp.on('error', function (data) {
+//   console.log('ERRRR: ', data);
+// })
+// //
+
+const demo = fs.readFileSync('packages/office-ui-fabric-react/dist/demo-app.js');
+Ftp.put(demo, 'site/wwwroot/v-erabe/demo-app.js', function (err) {
   if (!err)
     console.log("File transferred successfully!");
 
@@ -46,10 +51,22 @@ Ftp.put('clean.js', 'site/wwwroot/v-erabe/clean.js', function (err) {
     console.error('Error uploading' + err);
 });
 
-Ftp.put('../packages/office-ui-fabric-react/dist/demo-app.js', 'site/wwwroot/v-erabe/demo-app.js', function (err) {
+Ftp = new JSFtp(config);
+
+const html = fs.readFileSync('packages/office-ui-fabric-react/dist/index.html');
+Ftp.put(html, 'site/wwwroot/v-erabe/index.html', function (err) {
   if (!err)
     console.log("File transferred successfully!");
 
   else
     console.error('Error uploading' + err);
 });
+
+
+// Ftp.put('../packages/office-ui-fabric-react/dist/demo-app.js', 'site/wwwroot/v-erabe/demo-app.js', function (err) {
+//   if (!err)
+//     console.log("File transferred successfully!");
+
+//   else
+//     console.error('Error uploading' + err);
+// });
