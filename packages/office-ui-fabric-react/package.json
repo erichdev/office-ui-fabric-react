@@ -59,7 +59,7 @@
   "bundlesize": [
     {
       "path": "./dist/office-ui-fabric-react.js",
-      "maxSize": "152 kB"
+      "maxSize": "280 kB"
     }
   ]
 }
