@@ -11,6 +11,7 @@
   "license": "MIT",
   "scripts": {
     "build": "node ../../scripts/build.js",
+    "bundlesize": "bundlesize",
     "clean": "node ../../scripts/clean.js",
     "start": "node ../../scripts/start.js",
     "start-test": "node ../../scripts/start-test.js",
