@@ -17,6 +17,7 @@ import { IButtonProps, IButton } from './Button.Props';
 import { IButtonClassNames, getClassNames } from './BaseButton.classNames';
 import { getClassNames as getSplitButtonClassNames, ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
 import { GroupedList } from '../GroupedList';
+import { Calendar } from '../Calendar';
 
 export interface IBaseButtonProps extends IButtonProps {
   baseClassName?: string;
