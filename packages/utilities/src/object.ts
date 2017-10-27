@@ -80,6 +80,31 @@ export function filteredAssign(isAllowed: (propName: string) => boolean, target:
 }
 
 /**
+ * Performs a deep merge of two objects.
+ * @beta
+ * @param target - Original object to merge into
+ * @param source - Object that should be merged with target and overwrite existing properties
+ */
+// tslint:disable-next-line:no-any
+export function deepMerge(target: any, source: any): any {
+  let output = { ...target };
+
+  for (const key in source) {
+    if (output[key]) {
+      if (typeof source[key] === 'object') {
+        output[key] = deepMerge(output[key], source[key]);
+      } else {
+        output[key] = source[key];
+      }
+    } else {
+      output[key] = source[key];
+    }
+
+  }
+  return output;
+}
+
+/**
  * Generates a unique id in the global scope (this spans across duplicate copies of the same library.)
  *
  * @public
