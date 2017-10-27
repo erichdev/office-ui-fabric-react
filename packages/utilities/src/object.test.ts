@@ -1,4 +1,4 @@
-import { assign, filteredAssign, mapEnumByName } from './object';
+import { assign, filteredAssign, mapEnumByName, deepMerge } from './object';
 
 describe('assign', () => {
   it('can copy an object', () => {
@@ -51,5 +51,69 @@ describe('mapEnumByName', () => {
     });
 
     expect(result).toEqual(['first', 'second', 'third', 'fourth']);
+  });
+});
+
+describe('deepMerge', () => {
+  it('merges two objects with nested objects', () => {
+    const target = {
+      small: {
+        size: 6
+      },
+      medium: {
+        font: 'times',
+        size: 12,
+        options: {
+          color: 'green',
+          underline: true
+        }
+      }
+    };
+
+    const source = {
+      small: {
+        font: 'arial'
+      },
+      medium: {
+        font: 'helvetica',
+        weight: 300,
+        options: {
+          color: 'red',
+          hover: 'orange'
+        }
+      },
+      large: {
+        size: 20
+      }
+    };
+
+    /**
+     * Expected result should have:
+     *  1. All the properties of `source`, including nested objects
+     *  2. Properties of `target` that are not in `source` (therefore not overwritten)
+     */
+    const expected = {
+      small: {
+        font: 'arial',
+        size: 6
+      },
+      medium: {
+        font: 'helvetica',
+        size: 12,
+        weight: 300,
+        options: {
+          color: 'red',
+          hover: 'orange',
+          underline: true
+        }
+      },
+      large: {
+        size: 20
+      }
+    };
+
+    const result = deepMerge(target, source);
+    expect(result).toEqual(expected);
+
   });
 });
