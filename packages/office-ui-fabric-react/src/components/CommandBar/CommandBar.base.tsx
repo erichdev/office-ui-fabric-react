@@ -96,11 +96,12 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
   }
 
   private _onRenderData = (data: ICommandBarData): JSX.Element => {
+    const { role } = this.props;
     return (
       <FocusZone
         className={css(this._classNames.root)}
         direction={FocusZoneDirection.horizontal}
-        role={'menubar'}
+        role={role || 'menubar'}
         aria-label={this.props.ariaLabel}
       >
         {/*Primary Items*/}
